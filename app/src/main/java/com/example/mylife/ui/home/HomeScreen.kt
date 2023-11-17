@@ -240,11 +240,9 @@ fun HomeScreenBody(
                 userDetail = userDetail
             )
             Spacer(modifier = Modifier.height(15.dp))
-            KcalDay(nutrition = userDetail.targetNutrition,
-                nutritionIn = userDetail.consumeNutrition,
+            KcalDay(
                 userDetail = userDetail
                 )
-
             Spacer(modifier = Modifier.height(20.dp))
             Food(navigateToListFood)
             Activity(navigateToListExer)

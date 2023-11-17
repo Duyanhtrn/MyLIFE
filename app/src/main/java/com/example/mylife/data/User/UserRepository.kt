@@ -8,5 +8,5 @@ interface UserRepository {
 
     suspend fun update_ser(user: User)
 
-    fun getUser(id: Int): User
+    fun getUser(id: Int): Flow<User>
 }

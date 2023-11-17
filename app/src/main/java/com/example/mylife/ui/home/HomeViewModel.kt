@@ -12,6 +12,7 @@ import com.example.mylife.data.User.User
 import com.example.mylife.data.User.UserRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -24,12 +25,12 @@ class HomeViewModel(
     val homeUiState = _homeUiState
 
     init{
-        var user = userRepository.getUser(1)
-        Log.d("CheckUser", "$user")
-        if(user != null){
-            _homeUiState.value = _homeUiState.value.copy(userDetail = UserDetail(targetNutrition = Nutrition(user.user_calories, user.user_protein, user.user_carb, user.user_fat)))
-        }
         viewModelScope.launch {
+            var user = userRepository.getUser(1).first()
+            Log.d("CheckUser", "$user")
+            if(user != null){
+                _homeUiState.value = _homeUiState.value.copy(userDetail = UserDetail(targetNutrition = Nutrition(user.user_calories, user.user_protein, user.user_carb, user.user_fat)))
+            }
             mealRepository.getMealForToday().collect{
                     mealList -> _homeUiState.value = _homeUiState.value.copy(
                 mealList = mealList,
@@ -38,7 +39,6 @@ class HomeViewModel(
                     remainNutrition = caculateRemain()
                 ))
             }
-
         }
     }
     private fun caculateConsume(mealList: List<Meal> = _homeUiState.value.mealList): Nutrition{

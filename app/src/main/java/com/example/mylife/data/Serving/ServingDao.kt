@@ -25,6 +25,6 @@ interface ServingDao {
     @Query("SELECT * FROM serving")
     fun get_all_serving(): Flow<List<Serving>>
 
-    @Query("SELECT food.* from food INNER JOIN serving ON food.food_id = serving.food_id WHERE serving_id = :id")
+    @Query("SELECT food.* from food INNER JOIN serving ON food.food_name = serving.food_name WHERE serving_id = :id")
     fun get_food_from_serving(id: Int): Flow<Food>
 }

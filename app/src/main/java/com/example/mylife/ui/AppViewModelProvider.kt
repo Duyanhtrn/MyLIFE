@@ -29,6 +29,7 @@ import com.example.mylife.ui.food.DetailInforViewModel
 import com.example.mylife.ui.food.FoodListViewModel
 import com.example.mylife.ui.home.HomeViewModel
 import com.example.mylife.ui.information.EntryInfoViewModel
+import com.example.mylife.ui.information.UserInformationViewModel
 
 
 object AppViewModelProvider {
@@ -47,13 +48,19 @@ object AppViewModelProvider {
         }
         initializer {
             FoodListViewModel(
-                myLife().container.foodRepository
+                myLife().container.foodRepository,
+                this.createSavedStateHandle()
             )
         }
         initializer {
             DetailInforViewModel(
                 this.createSavedStateHandle(),
                 myLife().container.foodRepository
+            )
+        }
+        initializer {
+            UserInformationViewModel(
+                myLife().container.userRepository
             )
         }
 

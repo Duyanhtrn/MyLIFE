@@ -50,7 +50,7 @@ fun infOut() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "BURNED",
             fontSize = 21.sp)
-        Text(text = "0")
+        Text(text = "")
     }
 }
 

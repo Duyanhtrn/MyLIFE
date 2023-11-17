@@ -19,8 +19,6 @@ import com.example.mylife.ui.home.UserDetail
 
 @Composable
 fun KcalDay(
-    nutrition: Nutrition,
-    nutritionIn: Nutrition,
     userDetail: UserDetail
 ){
     Box(
@@ -34,19 +32,19 @@ fun KcalDay(
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(text = "Protein:",
                     fontSize = 21.sp)
-                Text(text = "${nutritionIn.protein}/${nutrition.protein}")
+                Text(text = "${userDetail.consumeNutrition.protein}/${userDetail.targetNutrition.protein}")
             }
             Spacer(modifier = Modifier.width(35.dp))
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(text = "Carbs:",
                     fontSize =  21.sp)
-                Text(text = "${nutritionIn.carb}/${nutrition.carb}")
+                Text(text = "${userDetail.consumeNutrition.carb}/${userDetail.targetNutrition.carb}")
             }
             Spacer(modifier = Modifier.width(35.dp) )
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(text = "Fat:",
                     fontSize = 21.sp)
-                Text(text = "${nutritionIn.fat}/${nutrition.fat}")
+                Text(text = "${userDetail.consumeNutrition.fat}/${userDetail.targetNutrition.fat}")
             }
         }
     }

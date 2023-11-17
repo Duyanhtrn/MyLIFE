@@ -45,6 +45,7 @@ fun AppNavHost(
 
 ) {
     var isFirstTime by rememberSaveable { mutableStateOf(true) }
+    Log.d("navigate", "$isFirstTime")
     NavHost(
         navController = navController,
         startDestination = if (isFirstTime) WelcomeDestination.route else HomeDestination.route,
@@ -55,6 +56,7 @@ fun AppNavHost(
 
                 )
             isFirstTime = false
+            Log.d("navigate", "$isFirstTime")
         }
         composable(route = EntryInforDestination.route) {
             UpProfile( { navController.navigate(HomeDestination.route) } ,
@@ -77,7 +79,6 @@ fun AppNavHost(
             rowItemExercise(navigateToAddExer = { navController.navigate(AddExerDestination.route) },
                 navigateToUser = { navController.navigate(USerDestination.route) },
                 navigateToHome = { navController.navigate(HomeDestination.route) },
-
                 )
         }
         composable(route = DetailInforDestination.route) {

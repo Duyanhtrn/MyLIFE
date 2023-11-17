@@ -39,22 +39,12 @@ abstract class AppDatabase: RoomDatabase() {
         fun getDatabase(context: Context): AppDatabase {
             return Instance ?: synchronized(this) {
                 Room.databaseBuilder(context, AppDatabase::class.java, "MyLife_Datbase")
-                    .fallbackToDestructiveMigration()
-                    .allowMainThreadQueries()
-                    .addMigrations(MIGRATION_1_2)
                     .createFromAsset("database/FoodDatabase")
                     .build()
                     .also { Instance = it
                     }
             }
+            Log.d("database","databaseis createdb ")
         }
-        private val MIGRATION_1_2 = object : Migration(1, 2) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                Log.d("migrate","Migration 1 to 2 completed.")
-
-            }
         }
-
-
-    }
 }

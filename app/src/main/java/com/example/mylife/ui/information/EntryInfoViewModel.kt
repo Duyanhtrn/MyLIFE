@@ -47,13 +47,14 @@ class EntryInfoViewModel(
         val height: Int = uiState.userHeight.toInt()
         val weight: Int = uiState.userWeight.toInt()
         val age: Int = uiState.userAge.toInt()
-        val gender = if (uiState.userGender == "Male") 5 else -161
+        val gender = if (uiState.userGender == "1") 5 else -161
         val userActivityRate = when(uiState.userActivityRate.toInt()){
             1 -> 1.375
             2 -> 1.55
             else -> 1.55
         }
         val tdee = (10 * weight + 6.25 * height - 5 * age + gender) * userActivityRate
+        Log.d("tdeecaculate", "success")
         entryInfoUiState = entryInfoUiState.copy(userInfo = uiState.copy(userTdee = tdee.toDouble()))
     }
     private fun caculateNutrition(uiState: UserInfo = entryInfoUiState.userInfo){

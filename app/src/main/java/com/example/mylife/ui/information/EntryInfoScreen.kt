@@ -122,7 +122,7 @@ fun UpProfileBody(
                     .fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(15.dp))
-            GenderRateRadioGroupExample()
+            GenderRateRadioGroupExample(onValueChange = viewModel::updateUiState, userInfo = viewModel.entryInfoUiState.userInfo)
             Spacer(modifier = Modifier.height(15.dp))
             EditNumberField(
                 label = R.string.age,
@@ -179,12 +179,10 @@ fun UpProfileBody(
             ) {
                 Button(
                     onClick = {
-
                         coroutineScope.launch {
                             viewModel.saveUser()
                             Log.d("SaveUser", "userSaved: ${viewModel.entryInfoUiState.userInfo.toUser()}")
                             navigateToHome()
-
                         }
                     },
                     modifier = Modifier.padding(0.dp, 0.dp, 0.dp,  20.dp)
@@ -268,8 +266,8 @@ fun ActivityRateRadioGroupExample(
 }
 @Composable
 fun GenderRateRadioGroupExample(
-   // onValueChange: (UserInfo) -> Unit = {},
-   // userInfo: UserInfo
+   onValueChange: (UserInfo) -> Unit = {},
+   userInfo: UserInfo
 ) {
     var selectedOption by remember { mutableStateOf(0) }
 
@@ -281,12 +279,12 @@ fun GenderRateRadioGroupExample(
         Row {
             RadioOption("Male", 1, selectedOption) {
                 selectedOption = it
-                //  onValueChange(userInfo.copy(userActivityRate = selectedOption.toString()))
-                //  Log.d("activityRate", "added")
+                onValueChange(userInfo.copy(userGender = selectedOption.toString()))
+                Log.d("activityRate", "added")
             }
             RadioOption("Female", 2, selectedOption) {
                 selectedOption = it
-                // onValueChange(userInfo.copy(userActivityRate = selectedOption.toString()))
+                onValueChange(userInfo.copy(userGender = selectedOption.toString()))
             }
         }
     }

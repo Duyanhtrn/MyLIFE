@@ -31,7 +31,6 @@ class AppDataContainer(private val context: Context) : AppContainer {
         OfflineMealRepository(AppDatabase.getDatabase(context).mealDao())
     }
     override val userRepository: UserRepository by lazy {
-        Log.d("AppDataContainer", "UserRepo is initialized")
         OfflineUserRepository(AppDatabase.getDatabase(context).userDao())
     }
     override val foodRepository: FoodRepository by lazy{
