@@ -122,20 +122,7 @@ fun UpProfileBody(
                     .fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(15.dp))
-            EditNumberField(
-                label = R.string.gender,
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                ),
-                value = viewModel.entryInfoUiState.userInfo.userGender,
-                onValueChange = {
-                    viewModel.updateUiState(viewModel.entryInfoUiState.userInfo.copy(userGender = it))
-                },
-                modifier = Modifier
-                    .padding(bottom = 32.dp)
-                    .fillMaxWidth()
-            )
+            GenderRateRadioGroupExample()
             Spacer(modifier = Modifier.height(15.dp))
             EditNumberField(
                 label = R.string.age,
@@ -192,10 +179,11 @@ fun UpProfileBody(
             ) {
                 Button(
                     onClick = {
-                            coroutineScope.launch {
-                                viewModel.saveUser()
-                                Log.d("SaveUser", "userSaved: ${viewModel.entryInfoUiState.userInfo.toUser()}")
-                                navigateToHome()
+
+                        coroutineScope.launch {
+                            viewModel.saveUser()
+                            Log.d("SaveUser", "userSaved: ${viewModel.entryInfoUiState.userInfo.toUser()}")
+                            navigateToHome()
 
                         }
                     },
@@ -209,8 +197,8 @@ fun UpProfileBody(
 }
 
 // Hàm kiểm tra xem cả hai trường có được điền đầy đủ hay không, nếu điền đủ thông tin thì mới có thể bấm UPDATE NOW
-fun areFieldsFilledEntry(nameUser: String, age: String, height: String, weight: String, gender: String): Boolean {
-    return nameUser.isNotBlank() && age.isNotBlank() && height.isNotBlank() && weight.isNotBlank() && gender.isNotBlank()
+fun areFieldsFilledEntry(nameUser: String, age: String, height: String, weight: String): Boolean {
+    return nameUser.isNotBlank() && age.isNotBlank() && height.isNotBlank() && weight.isNotBlank()
 }
 
 @Composable
@@ -278,6 +266,32 @@ fun ActivityRateRadioGroupExample(
         }
     }
 }
+@Composable
+fun GenderRateRadioGroupExample(
+   // onValueChange: (UserInfo) -> Unit = {},
+   // userInfo: UserInfo
+) {
+    var selectedOption by remember { mutableStateOf(0) }
+
+    Column {
+        Text(text = "Gender: ",
+            fontSize = 21.sp,
+            modifier = Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp))
+        Spacer(modifier = Modifier.height(5.dp))
+        Row {
+            RadioOption("Male", 1, selectedOption) {
+                selectedOption = it
+                //  onValueChange(userInfo.copy(userActivityRate = selectedOption.toString()))
+                //  Log.d("activityRate", "added")
+            }
+            RadioOption("Female", 2, selectedOption) {
+                selectedOption = it
+                // onValueChange(userInfo.copy(userActivityRate = selectedOption.toString()))
+            }
+        }
+    }
+}
+
 
 @Composable
 fun TestUpProfile(

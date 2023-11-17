@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.mylife.ui.home.Nutrition
 import com.example.mylife.ui.home.UserDetail
 
@@ -30,7 +31,7 @@ import com.example.mylife.ui.home.UserDetail
 @Composable
 fun infIn(nutrition: Nutrition) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Kcal in")
+        Text(text = "EATEN", fontSize = 21.sp)
         Text(text = "${nutrition.calories}")
     }
 }
@@ -38,16 +39,18 @@ fun infIn(nutrition: Nutrition) {
 @Composable
 fun infNeed(nutrition: Nutrition) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Remain")
+        Text(text = "KCAL LEFT",
+            fontSize = 21.sp)
         Text(text = "${nutrition.calories}")
     }
 }
 
 @Composable
-fun infDay(nutrition: Nutrition) {
+fun infOut() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Kcal daily")
-        Text(text = "${nutrition.calories}")
+        Text(text = "BURNED",
+            fontSize = 21.sp)
+        Text(text = "0")
     }
 }
 
@@ -58,10 +61,10 @@ fun YourKcal(modifier: Modifier, userDetail: UserDetail) {
         horizontalArrangement = Arrangement.Center
     ) {
         infIn(userDetail.consumeNutrition)
-        Spacer(modifier = Modifier.width(15.dp))
+        Spacer(modifier = Modifier.width(35.dp))
         infNeed(userDetail.remainNutrition)
-        Spacer(modifier = Modifier.width(15.dp))
-        infDay(userDetail.targetNutrition)
+        Spacer(modifier = Modifier.width(35.dp))
+        infOut()
     }
 }
 

@@ -36,13 +36,17 @@ import com.example.mylife.TopBar
 import com.example.mylife.navigation.navigationDestination
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mylife.data.Food.Food
+import com.example.mylife.reuse.EditNumberField
 import com.example.mylife.ui.AppViewModelProvider
 
 // trang chứa thông tin của tất cả các food có trong CSDL và có thể thêm bằng dấu cộng.
@@ -94,11 +98,29 @@ fun MyLazyColumn(
     navigateToDetailFood: () -> Unit,
     foodList:List<Food>
 ) {
-    LazyColumn {
-        items(items = foodList, key = {it.food_id}){
-            item -> Item(item = item, navigateToDetailFood)
-        }
+    Column {
+        EditNumberField(
+            label = R.string.search,
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Done
+            ),
+            value = "",
+            onValueChange = {
+               // viewModel.updateUiState(viewModel.entryInfoUiState.userInfo.copy(userName = it))
+            },
+            modifier = Modifier
+                .padding(bottom = 32.dp)
+                .fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(15.dp))
+        LazyColumn {
+            items(items = foodList, key = { it.food_id }) { item ->
+                Item(item = item, navigateToDetailFood)
+                Spacer(modifier = Modifier.height(10.dp))
+            }
 
+        }
     }
 }
 

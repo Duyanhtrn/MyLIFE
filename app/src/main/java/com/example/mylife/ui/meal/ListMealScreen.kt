@@ -122,8 +122,8 @@ fun rowItemFoodMeal(navigateToEachMeal: () -> Unit,
             topBar = {
                 TopBar(
 
-                    navigateToHome,
-                    navigateToUser,
+                    navigateToHome=navigateToHome,
+                    navigateToUserInfor = navigateToUser,
                     hasHome = true,
                     hasUser = true
                 )

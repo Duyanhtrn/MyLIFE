@@ -105,14 +105,7 @@ fun MyLazyColumnMeal(navigateToDetailFood: () -> Unit) {
             modifier = Modifier.padding(23.dp, 25.dp, 23.dp, 10.dp),
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold)
-        YourKcal(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentSize(Alignment.Center),
-            userDetail = UserDetail()
-        )
-        Spacer(modifier = Modifier.height(15.dp))
-        KcalDay(Nutrition(0.0,0.0,0.0,0.0))
+
         LazyColumn() {
             item {
 

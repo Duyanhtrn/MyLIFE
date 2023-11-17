@@ -54,7 +54,8 @@ object ExerListDestination : navigationDestination {
 @Composable
 fun Item(modifier : Modifier = Modifier,
                     name: String,
-                    kcal: Int
+                    kcal: Int,
+                    time: Int
 ) {
     Box(modifier=Modifier.border(1.dp, Color.Black)
     ) {
@@ -76,7 +77,7 @@ fun Item(modifier : Modifier = Modifier,
                     text = name,
                 )
             }
-            Text(text = "${kcal} Kcal/30p")
+            Text(text = "${kcal} Kcal/${time}p")
         }
     }
 }
@@ -86,12 +87,14 @@ fun Item(modifier : Modifier = Modifier,
 fun MyLazyColum() {
     LazyColumn {
         item {
-            Text(text = "List Exercise:",
+            Text(text = "List Activity:",
                 modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 10.dp),
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold)
-            Item(name = "run", kcal = 100)
-            Spacer(modifier = Modifier.height(20.dp))
+//            Item(name = "Run", kcal = 100, time= 60)
+//            Spacer(modifier = Modifier.height(20.dp))
+//            Item(name = "Swim", kcal = 100, time = 20)
+//            Spacer(modifier = Modifier.height(20.dp))
         }
     }
 }
@@ -107,8 +110,8 @@ fun rowItemExercise(navigateToAddExer: () -> Unit,
         topBar = {
             TopBar(
 
-                navigateToHome,
-                navigateToUser,
+                navigateToHome=navigateToHome,
+                navigateToUserInfor = navigateToUser,
                 hasHome = true,
                 hasUser = true
             )
@@ -154,70 +157,4 @@ fun rowItemExerciseBody(
     }
 }
 
-@Composable
-fun TestrowItemExercise(
 
-) {
-    Column {
-        Box(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                IconButton(onClick = { }) {
-                    Icon(
-                        imageVector = Icons.Filled.Home,
-                        contentDescription = null
-                    )
-                }
-                Text(
-                    text = "List Exercise",
-                    fontSize = 30.sp,
-                    modifier = Modifier.align(Alignment.CenterVertically)
-                )
-                IconButton(onClick = { }) {
-                    Icon(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = null
-                    )
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(20.dp))
-        Column(
-            horizontalAlignment = Alignment.End,
-            modifier = Modifier.padding(20.dp, 0.dp, 20.dp, 0.dp)
-        ) {
-            Column {
-                Spacer(modifier = Modifier.height(20.dp))
-                Item(name = "run", kcal = 100)
-                Spacer(modifier = Modifier.height(15.dp))
-                Item(name = "swing", kcal = 200)
-                Spacer(modifier = Modifier.height(15.dp))
-                Item(name = "jump", kcal = 150)
-                Spacer(modifier = Modifier.height(15.dp))
-                Item(name = "sleep", kcal = 70)
-            }
-            Button(
-                onClick = { },
-
-                ) {
-                Image(
-                    painter = painterResource(R.drawable.plus),
-                    contentDescription = null,
-                    modifier = Modifier.size(20.dp)
-
-                )
-            }
-        }
-    }
-}
-
-
-@Preview
-@Composable
-fun preTestrowItemExercise(){
-   // TestrowItemExercise()
-}

@@ -1,7 +1,12 @@
 package com.example.mylife.navigation
 
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
@@ -36,16 +41,20 @@ import com.example.mylife.ui.welcome.WelcomeScreen
 @Composable
 fun AppNavHost(
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+
 ) {
+    var isFirstTime by rememberSaveable { mutableStateOf(true) }
     NavHost(
         navController = navController,
-        startDestination = WelcomeDestination.route,
+        startDestination = if (isFirstTime) WelcomeDestination.route else HomeDestination.route,
         modifier = modifier
     ) {
         composable(route = WelcomeDestination.route) {
             WelcomeScreen(navigateToEntryInfor={ navController.navigate(EntryInforDestination.route) },
+
                 )
+            isFirstTime = false
         }
         composable(route = EntryInforDestination.route) {
             UpProfile( { navController.navigate(HomeDestination.route) } ,
