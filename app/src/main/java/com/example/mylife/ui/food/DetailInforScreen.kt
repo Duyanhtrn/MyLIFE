@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
@@ -106,6 +107,7 @@ fun listItem(
 fun FullInforFood(
     navigateToUser: () -> Unit,
     navigateToHome: () -> Unit,
+    navigateToEachMeal: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -116,7 +118,7 @@ fun FullInforFood(
                 hasHome = true)
         },
     ) { innerPadding ->
-        FullInforFoodBody(
+        FullInforFoodBody(navigateToEachMeal
         )
     }
 }
@@ -124,15 +126,45 @@ fun FullInforFood(
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FullInforFoodBody(
+fun test(
+ //   navigateToEachMeal: () -> Unit,
+//    canNavigateBack: Boolean,
+//    navigateUp: () -> Unit = {},
+//    currentScreen: AppScreen
+    // viewModel: DetailInforViewModel = viewModel(factory = AppViewModelProvider.Factory)
+) {
+    //var uiState = viewModel.uiState.collectAsState()
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Spacer(modifier = Modifier.height(45.dp))
+        Image(painter = painterResource(R.drawable.detail), contentDescription = null)
+        Spacer(modifier = Modifier.height(15.dp))
+        Text(text = "Name: ",
+            modifier=Modifier.padding(20.dp),
+            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(20.dp))
+       // listItem(foodInfo = uiState.value)
+        Column(modifier = Modifier
+            .fillMaxWidth().padding(10.dp)
+            , horizontalAlignment = Alignment.End) {
+            Button(onClick = {  },
+                ) {
+                Text(text = "ADD")
+            }
+        }
+    }
+    }
 
+@Composable
+fun FullInforFoodBody(
+    navigateToEachMeal: () -> Unit,
 //    canNavigateBack: Boolean,
 //    navigateUp: () -> Unit = {},
 //    currentScreen: AppScreen
     viewModel: DetailInforViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     var uiState = viewModel.uiState.collectAsState()
-    Column {
+    Column(modifier = Modifier.fillMaxWidth()) {
         Spacer(modifier = Modifier.height(45.dp))
         Image(painter = painterResource(R.drawable.detail), contentDescription = null)
         Spacer(modifier = Modifier.height(15.dp))
@@ -142,67 +174,20 @@ fun FullInforFoodBody(
             fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(20.dp))
         listItem(foodInfo = uiState.value)
-    }
-    }
-
-@Composable
-fun TestFullInforFood(
-
-
-) {
-    Column {
-        Box(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+        Column(modifier = Modifier
+            .fillMaxWidth().padding(10.dp)
+            , horizontalAlignment = Alignment.End) {
+            Button(onClick = {  },
             ) {
-                IconButton(onClick = {}) {
-                    Icon(
-                        imageVector = Icons.Filled.Home,
-                        contentDescription = null
-                    )
-                }
-                Text(
-                    text = "Food Nutrition",
-                    fontSize = 30.sp,
-                    modifier = Modifier.align(Alignment.CenterVertically)
-                )
-                IconButton(onClick = {}) {
-                    Icon(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = null
-                    )
-                }
+                Text(text = "ADD")
             }
-        }
-        Spacer(modifier = Modifier.height(20.dp))
-        Text(text = "Name/100g:",
-
-            modifier=Modifier.padding(20.dp),
-            fontSize = 20.sp,
-            )
-        Spacer(modifier = Modifier.height(10.dp))
-        Column() {
-            Spacer(modifier = Modifier.height(10.dp))
-            Item(name = "Kcal: ", g = 0, 100)
-            Spacer(modifier = Modifier.height(15.dp))
-            Item(name = "Protein: ", g = 10)
-            Spacer(modifier = Modifier.height(15.dp))
-            Item(name = "Carbohydrate: ", g = 10)
-            Spacer(modifier = Modifier.height(15.dp))
-            Item(name = "Fat: ", g = 10)
-            Spacer(modifier = Modifier.height(15.dp))
-            Item(name = "Vitamin: ", g = 10)
-            Spacer(modifier = Modifier.height(15.dp))
-            Item(name = "Hydrat: ", g = 10)
         }
     }
 }
 
+
 @Preview
 @Composable
 fun preTestFullInforFood(){
-    TestFullInforFood()
+    test()
 }

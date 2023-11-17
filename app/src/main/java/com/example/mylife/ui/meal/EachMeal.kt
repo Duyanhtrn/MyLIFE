@@ -110,7 +110,7 @@ fun MyLazyColumnMeal(navigateToDetailFood: () -> Unit) {
             item {
 
                 Spacer(modifier = Modifier.height(15.dp))
-                Item(name = "Susu", kcal = 100,navigateToDetailFood)
+                Item(name = "Susu", kcal = 100, navigateToDetailFood)
                 Spacer(modifier = Modifier.height(14.dp))
                 Item(name = "Susu", kcal = 100, navigateToDetailFood)
                 Spacer(modifier = Modifier.height(14.dp))

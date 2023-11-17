@@ -34,7 +34,7 @@ import com.example.mylife.ui.meal.AddMealScreen
 import com.example.mylife.ui.meal.EachMealDestination
 import com.example.mylife.ui.meal.MealListDestination
 import com.example.mylife.ui.meal.rowItemEachMeal
-import com.example.mylife.ui.meal.rowItemFoodMeal
+import com.example.mylife.ui.meal.rowItemListMeal
 import com.example.mylife.ui.welcome.WelcomeDestination
 import com.example.mylife.ui.welcome.WelcomeScreen
 
@@ -63,8 +63,8 @@ fun AppNavHost(
                 )
         }
         composable(route = HomeDestination.route) {
-            HomeScreen(navigateToListFood = { navController.navigate(FoodListDestination.route) }
-                    , navigateToListExer = { navController.navigate(ExerListDestination.route) },
+            HomeScreen(
+                     navigateToListExer = { navController.navigate(ExerListDestination.route) },
                 navigateToUser = { navController.navigate(USerDestination.route) },
                 navigateToListMeal = { navController.navigate(MealListDestination.route) })
         }
@@ -85,7 +85,7 @@ fun AppNavHost(
             FullInforFood(
                 navigateToUser = { navController.navigate(USerDestination.route) },
                 navigateToHome = { navController.navigate(HomeDestination.route) },
-
+                navigateToEachMeal = { navController.navigate(EachMealDestination.route) },
                 )
         }
         composable(route = AddFoodDestination.route) {
@@ -106,23 +106,23 @@ fun AppNavHost(
                 )
         }
         composable(route = MealListDestination.route) {
-            rowItemFoodMeal(navigateToEachMeal = { navController.navigate(EachMealDestination.route) },
+            rowItemListMeal(navigateToEachMeal = { navController.navigate(EachMealDestination.route) },
                 navigateToAddMeal = { navController.navigate(AddMealDestination.route) },
                 navigateToUser = { navController.navigate(USerDestination.route) },
-                navigateToHome = { navController.navigate(HomeDestination.route) })
-
+                navigateToHome = { navController.navigate(HomeDestination.route) }
+            )
         }
         composable(route = EachMealDestination.route) {
             rowItemEachMeal(navigateToHome = { navController.navigate(HomeDestination.route) },
                 navigateToUser = { navController.navigate(USerDestination.route) },
-                navigateToAddFood= { navController.navigate(AddFoodDestination.route) },
+                navigateToAddFood= { navController.navigate(FoodListDestination.route) },
                 navigateToDetailFood = { navController.navigate(DetailInforDestination.route) },
             )
         }
         composable(route = AddMealDestination.route) {
             AddMealScreen(navigateToHome = { navController.navigate(HomeDestination.route) },
                 navigateToUser = { navController.navigate(USerDestination.route) },
-                navigateToListMeal= { navController.navigate(MealListDestination.route) },
+                navigateToListMeal = { navController.navigate(MealListDestination.route) },
             )
         }
     }

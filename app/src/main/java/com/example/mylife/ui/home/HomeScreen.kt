@@ -193,7 +193,7 @@ fun Meal(navigateToListMeal: () -> Unit,){
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
-    navigateToListFood: () -> Unit,
+
     navigateToListExer: () -> Unit,
     navigateToUser: () -> Unit,
     navigateToListMeal: () -> Unit,
@@ -209,7 +209,7 @@ fun HomeScreen(
         },
     ) { innerPadding ->
         HomeScreenBody(
-            navigateToListFood,
+
             navigateToListExer,
             navigateToListMeal,
             userDetail = homeUiState.userDetail
@@ -222,7 +222,7 @@ fun HomeScreen(
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreenBody(
-               navigateToListFood: () -> Unit,
+
                navigateToListExer: () -> Unit,
                navigateToListMeal: () -> Unit,
                modifier: Modifier = Modifier,
@@ -244,7 +244,6 @@ fun HomeScreenBody(
                 userDetail = userDetail
                 )
             Spacer(modifier = Modifier.height(20.dp))
-            Food(navigateToListFood)
             Activity(navigateToListExer)
             Meal(navigateToListMeal)
         }

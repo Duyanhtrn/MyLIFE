@@ -92,7 +92,7 @@ fun AddMealBody(
         Column(modifier = Modifier.fillMaxSize()) {
             Spacer(modifier = Modifier.height(50.dp))
             Text(
-                text = "ADD MORE Meal:",
+                text = "ADD MORE MEAL:",
                 fontSize = 25.sp,
                 fontWeight = FontWeight.Bold
             )

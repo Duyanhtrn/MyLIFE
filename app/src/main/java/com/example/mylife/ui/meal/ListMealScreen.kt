@@ -78,7 +78,7 @@ fun Item(name: String,
                 Text(text = "At 09:AM")
             }
         }
-        Button(onClick =navigateToEachMeal) {
+        Button(onClick = navigateToEachMeal) {
             Text(text = "Detail")
         }
     }
@@ -112,7 +112,7 @@ fun MyLazyColumn(navigateToEachMeal: () -> Unit) {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun rowItemFoodMeal(navigateToEachMeal: () -> Unit,
+fun rowItemListMeal(navigateToEachMeal: () -> Unit,
                     navigateToAddMeal: () -> Unit,
                     navigateToUser: () -> Unit,
                     navigateToHome: () -> Unit,
@@ -149,7 +149,7 @@ fun rowItemFoodMeal(navigateToEachMeal: () -> Unit,
 
 @Composable
 fun rowItemListMealBody(
-                navigateToDetailFood: () -> Unit,
+    navigateToEachMeal: () -> Unit,
 
 //                canNavigateBack: Boolean,
 //                navigateUp: () -> Unit = {},
@@ -159,7 +159,7 @@ fun rowItemListMealBody(
 
                     modifier = Modifier.padding(20.dp, 70.dp, 20.dp, 0.dp)) {
             Column() {
-                MyLazyColumn(navigateToDetailFood)
+                MyLazyColumn(navigateToEachMeal)
             }
 
         }

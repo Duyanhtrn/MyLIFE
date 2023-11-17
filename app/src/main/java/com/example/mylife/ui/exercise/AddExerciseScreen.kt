@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -36,6 +37,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -84,7 +86,7 @@ fun AddExerciseBody(navigateToListExer: () -> Unit,
                       ) {
 
     var name by remember { mutableStateOf("") }
-    var kcal by remember { mutableStateOf("") }
+    var time by remember { mutableStateOf("") }
     Column(modifier = Modifier.fillMaxSize()) {
 
         Spacer(modifier = Modifier.height(30.dp))
@@ -115,15 +117,26 @@ fun AddExerciseBody(navigateToListExer: () -> Unit,
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Done
                 ),
-                value = kcal,
-                onValueChange = { kcal = it },
+                value = time,
+                onValueChange = { time = it },
                 modifier = Modifier
                     .padding(bottom = 32.dp)
                     .fillMaxWidth()
             )
+            Spacer(modifier = Modifier.height(20.dp))
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth())
+            {
+                Text(text = "Kcal: ",
+                    fontSize = 22.sp,
+                    textAlign = TextAlign.Center
+                    )
+            }
+
             Spacer(modifier = Modifier.height(15.dp))
             Button(onClick = {
-                if (areFieldsFilled(name, kcal)) {
+                if (areFieldsFilled(name, time)) {
                     // Nếu cả hai trường đã được điền đầy đủ, thực hiện hành động ADD
                     navigateToListExer()
                 } else {
@@ -138,8 +151,8 @@ fun AddExerciseBody(navigateToListExer: () -> Unit,
 }
 
 // Hàm kiểm tra xem cả hai trường có được điền đầy đủ hay không, nếu điền đủ thông tin thì mới có thể bấm ADD
-private fun areFieldsFilled(name: String, kcal: String): Boolean {
-    return name.isNotBlank() && kcal.isNotBlank()
+private fun areFieldsFilled(name: String, time: String): Boolean {
+    return name.isNotBlank() && time.isNotBlank()
 }
 
 @Composable
