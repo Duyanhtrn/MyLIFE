@@ -56,7 +56,7 @@ object DetailInforDestination : navigationDestination {
     override val route = "item_details"
     override val titleRes = R.string.DETAILINFOR
     const val itemIdArg = "itemId"
-  //  val routeWithArgs = "$route/{$itemIdArg}"
+    val routeWithArgs = "$route/{$itemIdArg}"
 }
 
 @Composable

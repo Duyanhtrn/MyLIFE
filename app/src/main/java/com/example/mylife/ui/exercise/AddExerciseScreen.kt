@@ -90,7 +90,7 @@ fun AddExerciseBody(navigateToListExer: () -> Unit,
         Spacer(modifier = Modifier.height(30.dp))
         Image(painter = painterResource(R.drawable.exer), contentDescription = null)
         Spacer(modifier = Modifier.height(30.dp))
-        Text(text = "Add more exercise:",
+        Text(text = "Add more activity:",
             fontSize = 25.sp,
             fontWeight = FontWeight.Bold
         )
@@ -110,7 +110,7 @@ fun AddExerciseBody(navigateToListExer: () -> Unit,
             )
             Spacer(modifier = Modifier.height(15.dp))
             EditNumberField(
-                label = R.string.kcal,
+                label = R.string.time,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Done

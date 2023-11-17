@@ -63,8 +63,8 @@ fun AddMealScreen(navigateToListMeal: () -> Unit,
     Scaffold(
         topBar = {
             TopBar(
-                navigateToUser,
-                navigateToHome,
+                navigateToUserInfor=navigateToUser,
+                navigateToHome=navigateToHome,
                 hasHome = true,
                 hasUser = true
             )

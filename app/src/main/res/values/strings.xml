@@ -6,7 +6,7 @@
     <string name="registerTittle">REGISTER</string>
     <string name="remmember">Remember me</string>
     <string name="accept">I accept all policy</string>
-    <string name="exercise">Exercise</string>
+    <string name="exercise">Activity</string>
 
     <string name="Meal">Meal</string>
 
@@ -20,8 +20,11 @@
     <string name="in">Kcal in</string>
     <string name="out">Kcal out</string>
     <string name="total">Total</string>
-    <string name="exer">Exercise</string>
+    <string name="exer">Activity</string>
     <string name="kcal">Kcal</string>
+    <string name="time">Time(minute)</string>
+    <string name="search">Search</string>
+
 
     <string name="quantity">Quantity</string>
 
@@ -46,7 +49,7 @@
     <string name="FOODLIST">Food List</string>
     <string name="DETAILINFOR">Detail infor</string>
     <string name="ADDFOOD">Add Food</string>
-    <string name="EXERLIST">Exercise list</string>
+    <string name="EXERLIST">Activity list</string>
     <string name="ADDEXER">Add Exercise</string>
     <string name="WELCOME">Welcome</string>
     <string name="ENTRY">Entry Infor</string>

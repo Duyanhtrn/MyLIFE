@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -64,8 +66,8 @@ fun AddFoodScreen(navigateToEachMeal: () -> Unit,
     Scaffold(
         topBar = {
             TopBar(
-                navigateToUser,
-                navigateToHome,
+                navigateToUserInfor =navigateToUser,
+                navigateToHome = navigateToHome,
                 hasHome = true,
                 hasUser = true
             )
@@ -125,19 +127,27 @@ fun AddFoodBody(
                             .padding(bottom = 32.dp)
                             .fillMaxWidth()
                     )
-                    Spacer(modifier = Modifier.height(15.dp))
-                    Button(onClick = {
-                        if (areFieldsFilled(name, quantity)) {
-                            // Nếu cả hai trường đã được điền đầy đủ, thực hiện hành động ADD
-                            navigateToEachMeal()
-                        } else {
-                            // Hiển thị thông báo hoặc thực hiện hành động khi có trường chưa được điền
-                            // ở đây có thể hiển thị một Toast hoặc thực hiện một hành động khác
-                        }
-                    },
+                }
+                Spacer(modifier = Modifier.height(15.dp))
+                inforFood(
+                    modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally)
+                )
+                Spacer(modifier = Modifier.height(15.dp))
+                Column(horizontalAlignment = Alignment.End, modifier = Modifier.fillMaxWidth()) {
+                    Button(
+                        onClick = {
+                            if (areFieldsFilled(name, quantity)) {
+                                // Nếu cả hai trường đã được điền đầy đủ, thực hiện hành động ADD
+                                navigateToEachMeal()
+                            } else {
+                                // Hiển thị thông báo hoặc thực hiện hành động khi có trường chưa được điền
+                                // ở đây có thể hiển thị một Toast hoặc thực hiện một hành động khác
+                            }
+                        },
                         modifier = Modifier
                             .align(Alignment.End) // Đặt nút ở góc trên bên phải
-                            .padding(16.dp)) {
+                            .padding(16.dp)
+                    ) {
                         Text(text = "ADD")
                     }
                 }
@@ -150,6 +160,35 @@ private fun areFieldsFilled(name: String, quantity: String): Boolean {
     return name.isNotBlank() && quantity.isNotBlank()
 }
 
+@Composable
+fun inforFood(modifier: Modifier){
+    Row(modifier = Modifier.fillMaxWidth()){
+        Column(horizontalAlignment = Alignment.CenterHorizontally){
+            Text(text = "Kcal:",
+                fontSize = 20.sp)
+            Text(text = "0")
+        }
+        Spacer(modifier = Modifier.width(10.dp))
+        Column(horizontalAlignment = Alignment.CenterHorizontally){
+            Text(text = "Protein:",
+                fontSize = 20.sp)
+            Text(text = "0")
+        }
+        Spacer(modifier = Modifier.width(10.dp))
+        Column(horizontalAlignment = Alignment.CenterHorizontally){
+            Text(text = "Carbs:",
+                fontSize = 20.sp)
+            Text(text = "0")
+        }
+        Spacer(modifier = Modifier.width(10.dp))
+        Column(horizontalAlignment = Alignment.CenterHorizontally){
+            Text(text = "Fat:",
+                fontSize = 20.sp)
+            Text(text = "0")
+        }
+
+    }
+}
 
 
 

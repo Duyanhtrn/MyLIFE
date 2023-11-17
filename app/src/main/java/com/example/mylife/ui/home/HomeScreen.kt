@@ -112,7 +112,7 @@ fun Food(navigateToListFood: () -> Unit,){
 }
 
 @Composable
-fun Exer(navigateToListExer: () -> Unit,){
+fun Activity (navigateToListExer: () -> Unit,){
     Box(modifier = Modifier
         .padding(20.dp, 20.dp, 20.dp, 0.dp)
         .border(1.dp, Color.Black)) {
@@ -240,11 +240,14 @@ fun HomeScreenBody(
                 userDetail = userDetail
             )
             Spacer(modifier = Modifier.height(15.dp))
-            KcalDay(nutrition = userDetail.targetNutrition)
-            KcalDay(nutrition = userDetail.consumeNutrition)
-            Spacer(modifier = Modifier.height(30.dp))
+            KcalDay(nutrition = userDetail.targetNutrition,
+                nutritionIn = userDetail.consumeNutrition,
+                userDetail = userDetail
+                )
+
+            Spacer(modifier = Modifier.height(20.dp))
             Food(navigateToListFood)
-            Exer(navigateToListExer)
+            Activity(navigateToListExer)
             Meal(navigateToListMeal)
         }
     }
