@@ -6,9 +6,9 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 interface UserActivityRepository {
-    suspend fun addActivity(activity: Activity)
-    suspend fun deleteActivity(activity: Activity)
-    suspend fun updateActivity(activity: Activity)
+    suspend fun addActivity(userActivity: UserActivity)
+    suspend fun deleteActivity(userActivity: UserActivity)
+    suspend fun updateActivity(userActivity: UserActivity)
     fun getActivity(id: Int): Flow<UserActivity>
     fun getActivityForToday(): Flow<List<UserActivity>>
 

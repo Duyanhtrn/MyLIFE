@@ -11,4 +11,6 @@ interface FoodRepository {
 
     suspend fun updateFood(food: Food)
 
+    fun searchFood(s: String): Flow<List<Food>>
+
 }

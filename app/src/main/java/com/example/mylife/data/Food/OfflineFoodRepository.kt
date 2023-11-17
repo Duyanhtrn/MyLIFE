@@ -10,4 +10,6 @@ class OfflineFoodRepository(private val foodDao: FoodDao) : FoodRepository {
     override fun getFoodStream(id: Int): Flow<Food> = foodDao.getFood(id)
 
     override suspend fun updateFood(food: Food) = foodDao.updateFood(food)
+
+    override fun searchFood(s: String): Flow<List<Food>> = foodDao.searchFood(s)
 }

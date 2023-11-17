@@ -51,6 +51,7 @@ object AddFoodDestination : navigationDestination {
     override val route = "navigateAddFood"
     override val titleRes = R.string.ADDFOOD
     const val itemIdArg = "foodId"
+    const val mealIdArg = "mealId"
    // val routeWithArgs = "$route/{$itemIdArg}"
 }
 
